@@ -1,6 +1,12 @@
 html, body {
     margin: 0;
     padding: 0;
+    color: white;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
 }
 #hero {
     position: relative;
@@ -33,16 +39,11 @@ html, body {
     opacity: 0.2;
 }
 .text {
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
     font-size: 123px;
     text-align: center;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     letter-spacing: -5px;
     word-spacing: 10px;
     font-weight: 900;
@@ -50,4 +51,70 @@ html, body {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2em;
+}
+.nav-inner {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo {
+    float: left;
+    border-bottom: 1.5em solid white;
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    height: 0;
+    position: relative;
+    width: 0;
+    font-size: 0.6em;
+    text-indent: 2.5em;
+    line-height: 3em;
+}
+.logo:after,
+.logo:before {
+    border-bottom: 1.5em solid white;
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 1.5em;
+    width: 0;
+}
+.logo:after {
+    left: 0;
+}
+.logo:before {
+    right: 0;
+}
+.logo span {
+    font-size: 2em;
+}
+.refresh {
+    float: right;
+    display: block;
+    height: 100%;
+    background: none;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    color: white;
+    font-size: 1em;
+    outline: none;
+}
+.refresh:hover, .refresh:focus {
+    background: rgba(255,255,255,0.3);
+}
+.refresh:active {
+    background: white;
+    border-style: solid;
+    color: transparent;
 }

@@ -1,29 +1,15 @@
 (function () {
    'use strict';
-
+   var gradients;
    window.onload = function () {
-
-        // unsplash.it + uigradients.com + github zen
-        var d = dimensions(),
-            url = makeUrl(d.width, d.height, false, false),
-            text = getText(),
-            gradients = getGradients();
-
-        Promise.all([text, gradients]).then(function (values) {
-            var t = (values[0].status == 200) ? values[0].responseText : 'We are a digital creative agency.',
-                r = arrayRand(JSON.parse(values[1].response)),
-                g = makeGradient(r.colour1, r.colour2);
-            makeHero(d.width, d.height, url, t, g);
-        }, function (errors) {
-
-        });
-
+        gradients = getGradients();
+        doIt();
+        document.querySelector('.refresh').addEventListener('click', doIt);
     };
 
     function makeHero (width, height, url, text, gradient) {
         var hero = document.getElementById('hero');
-        // hero.style.height = height;
-        // hero.style.width = width;
+        hero.innerHTML = '';
         hero.insertAdjacentHTML('beforeend', '<div class="img" style="background-image: url(' + url + ')" />');
         hero.insertAdjacentHTML('beforeend', '<div class="overlay" style="' + gradient +'" />');
         hero.insertAdjacentHTML('beforeend', '<p class="text">' + text + '</p>');
@@ -37,7 +23,7 @@
     }
 
     function makeUrl (width, height, greyscale, blurred) {
-        var url = 'https://unsplash.it{{ bw }}/{{ width }}/{{ height }}/?random{{ blur }}',
+        var url = 'https://unsplash.it{{ bw }}/{{ width }}/{{ height }}/?random{{ blur }}&cachebuster=' + (Date.now() / 1000 | 0),
             bw = (greyscale) ? '/g'  : '',
             blur = (blurred) ? '&blur' : '';
         url = url
@@ -85,6 +71,22 @@
         return tpl
             .replace('{{ to }}', to)
             .replace('{{ from }}', from);
+    }
+
+
+    function doIt () {
+        var d = dimensions(),
+            url = makeUrl(d.width, d.height, false, false),
+            text = getText();
+
+        Promise.all([text, gradients]).then(function (values) {
+            var t = (values[0].status == 200) ? values[0].responseText : 'We are a digital creative agency.',
+                r = arrayRand(JSON.parse(values[1].response)),
+                g = makeGradient(r.colour1, r.colour2);
+            makeHero(d.width, d.height, url, t, g);
+        }, function (errors) {
+
+        });
     }
 
 }());
