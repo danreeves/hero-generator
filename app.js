@@ -10,8 +10,7 @@
             gradients = getGradients();
 
         Promise.all([text, gradients]).then(function (values) {
-            console.log(values[0])
-            var t = values[0].responseText || 'We are a digital creative agency.',
+            var t = (values[0].status == 200) ? values[0].responseText : 'We are a digital creative agency.',
                 r = arrayRand(JSON.parse(values[1].response)),
                 g = makeGradient(r.colour1, r.colour2);
             makeHero(d.width, d.height, url, t, g);
