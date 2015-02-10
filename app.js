@@ -22,8 +22,8 @@
 
     function makeHero (width, height, url, text, gradient) {
         var hero = document.getElementById('hero');
-        hero.style.height = height;
-        hero.style.width = width;
+        // hero.style.height = height;
+        // hero.style.width = width;
         hero.insertAdjacentHTML('beforeend', '<div class="img" style="background-image: url(' + url + ')" />');
         hero.insertAdjacentHTML('beforeend', '<div class="overlay" style="' + gradient +'" />');
         hero.insertAdjacentHTML('beforeend', '<p class="text">' + text + '</p>');
