@@ -10,7 +10,8 @@
             gradients = getGradients();
 
         Promise.all([text, gradients]).then(function (values) {
-            var t = values[0].response || 'We are a digital creative agency.',
+            console.log(values[0])
+            var t = values[0].responseText || 'We are a digital creative agency.',
                 r = arrayRand(JSON.parse(values[1].response)),
                 g = makeGradient(r.colour1, r.colour2);
             makeHero(d.width, d.height, url, t, g);
@@ -54,7 +55,7 @@
             var request = new XHR('MSXML2.XMLHTTP.3.0');
             request.open('GET', 'https://api.github.com/zen', true);
             request.onreadystatechange = function () {
-                resolve(request);
+                if (request.readyState === 4) resolve(request);
             };
             request.send();
         });
@@ -66,7 +67,7 @@
             var request = new XHR('MSXML2.XMLHTTP.3.0');
             request.open('GET', 'https://cdn.rawgit.com/Ghosh/uiGradients/master/gradients.json', true);
             request.onreadystatechange = function () {
-                resolve(request);
+                if (request.readyState === 4) resolve(request);
             };
             request.send();
         });
