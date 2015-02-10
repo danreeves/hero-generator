@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#hero {
+    position: relative;
+    display: block;
+    background-color: #000;
+}
+.img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background-size: cover;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+}
+.text {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-size: 123px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: -5px;
+    word-spacing: 10px;
+    font-weight: 900;
+    line-height: 0.9em;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
