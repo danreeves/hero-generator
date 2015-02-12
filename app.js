@@ -13,6 +13,7 @@
         hero.insertAdjacentHTML('beforeend', '<div class="img" style="background-image: url(' + url + ')" />');
         hero.insertAdjacentHTML('beforeend', '<div class="overlay" style="' + gradient +'" />');
         hero.insertAdjacentHTML('beforeend', '<p class="text">' + text + '</p>');
+        window.fitText(document.querySelector('.text'), 0.75);
     }
 
     function dimensions () {
