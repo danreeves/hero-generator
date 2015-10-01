@@ -69,9 +69,12 @@
                   'background:     -ms-linear-gradient(90deg, {{ from }} 10%, {{ to }} 90%); /* IE10 */' +
                   'background:      -o-linear-gradient(90deg, {{ from }} 10%, {{ to }} 90%); /* Opera 11.10+ */' +
                   'background:         linear-gradient(90deg, {{ from }} 10%, {{ to }} 90%); /* W3C */';
-        return tpl
+        tpl.match(/{{ from }}/g).forEach(function() {
+            tpl = tpl
             .replace('{{ to }}', to)
             .replace('{{ from }}', from);
+        });
+        return tpl;
     }
 
 
@@ -83,7 +86,7 @@
         Promise.all([text, gradients]).then(function (values) {
             var t = (values[0].status == 200) ? values[0].responseText : 'We are a digital creative agency.',
                 r = arrayRand(JSON.parse(values[1].response)),
-                g = makeGradient(r.colour1, r.colour2);
+                g = makeGradient(r.colors[0], r.colors[1]);
             makeHero(d.width, d.height, url, t, g);
         }, function (errors) {
 
